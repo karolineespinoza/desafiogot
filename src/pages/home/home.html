@@ -1,14 +1,14 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title class="titulo">
-      GAME OF THRONES
+  <ion-navbar class="titulo">
+    <ion-title>
+        <img alt="logo" height="40"   src="../../assets/imgs/5847f821cef1014c0b5e48a9.png" > 
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <div>
-    <button ion-button full (click)="verCasas($event)"
+    <button ion-button full (click)="verCasas($event)" class="boton"
       [ngClass]="{'section-active': showHouses, 'section': !showHouses}" icon-end>
       Casas
       <ion-icon item-left ios="ios-arrow-forward" md="ios-arrow-forward" *ngIf="!showHouses"></ion-icon>
@@ -38,7 +38,7 @@
   </div>
 
   <div>
-    <button ion-button full (click)="verPersonajes($event)"
+    <button ion-button full (click)="verPersonajes($event)" class="boton"
       [ngClass]="{'section-active': showCharacters, 'section': !showCharacters}" icon-end>
 
       Personajes
@@ -74,11 +74,5 @@
       </ion-item-sliding>
     </ion-list>
   </div>
-
-<ion-fab bottom right #fab>
-   <button ion-fab (click)="pageScroller()">
-      <ion-icon name="ios-arrow-up"></ion-icon>
-   </button>
- </ion-fab>
 
 </ion-content>

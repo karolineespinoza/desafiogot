@@ -18,14 +18,19 @@ export class HomePage {
   public showCharacters: boolean = false;
 
   ionViewDidLoad() {
+
+    //Llamada a la API de GoT para obtener las casas
     this.api.get('houses', null, {})
       .subscribe(response => {
         this.casas = response;
 
         console.log(this.casas);
+      }, (error) => {
+
       }
       );
 
+    //Llamada a la API de GoT para obtener los personajes
     this.api.get('characters', null, {})
       .subscribe(response => {
         this.personajes = response;
@@ -33,27 +38,15 @@ export class HomePage {
         console.log(this.personajes);
       }, (error) => {
 
-      }, () => {
-        this.personajes.forEach(p => {
-          //let num = p["allegiances"].lastIndexOf("/")
-          if (p["allegiances"].length > 0) {
-            let num = p["allegiances"][0].lastIndexOf("/");
-            this.api.get('houses', p["allegiances"].toString().substring(num+ 1), {})
-              .subscribe(response => {
-                //this.personajes = response;
-
-                console.log(this.personajes);
-              });
-          }
-        });
       });
   }
 
-
+//Cambia valor de variable para mostrar u ocultar listado de personajes
   verPersonajes(e) {
     this.showCharacters = !this.showCharacters;
   }
 
+  //Cambia valor de variable para mostrar u ocultar listado de casas
   verCasas(e) {
     this.showHouses = !this.showHouses;
   }
