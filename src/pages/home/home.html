@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title class="titulo">
+      GAME OF THRONES
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div>
+    <button ion-button full (click)="verCasas($event)"
+      [ngClass]="{'section-active': showHouses, 'section': !showHouses}" icon-end>
+      Casas
+      <ion-icon item-left ios="ios-arrow-forward" md="ios-arrow-forward" *ngIf="!showHouses"></ion-icon>
+      <ion-icon item-left ios="ios-arrow-down" md="ios-arrow-down" *ngIf="showHouses"></ion-icon>
+    </button>
+  </div>
+  <div *ngIf="showHouses">
+    <ion-list>
+      <ion-item-sliding *ngFor="let casa of casas">
+        <ion-item>
+          <ion-card>
+            <ion-card-header class="nombres">
+              {{casa.name}}
+            </ion-card-header>
+
+            <ion-card-content>
+              <p> Region: {{casa.region}}</p>
+              <p> Words: {{casa.words}} </p>
+              <p> CurrentLord: {{casa.currentlord}} </p>
+
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-list>
+
+  </div>
+
+  <div>
+    <button ion-button full (click)="verPersonajes($event)"
+      [ngClass]="{'section-active': showCharacters, 'section': !showCharacters}" icon-end>
+
+      Personajes
+
+      <ion-icon item-right ios="ios-arrow-forward" md="ios-arrow-forward" *ngIf="!showCharacters"></ion-icon>
+      <ion-icon item-right ios="ios-arrow-down" md="ios-arrow-down" *ngIf="showCharacters"></ion-icon>
+    </button>
+  </div>
+  <div *ngIf="showCharacters">
+    <ion-list>
+      <ion-item-sliding *ngFor="let p of personajes">
+        <ion-item>
+          <ion-card>
+            <ion-card-header class="nombres">
+              {{p.name}}
+            </ion-card-header>
+
+            <ion-card-content>
+              <p>Gender: {{p.gender}}</p>
+              <p>Culture: {{p.culture}}</p>
+              <p>Born: {{p.born}}</p>
+              <p>Died: {{p.died}}</p>
+              <p>Titles: {{p.titles}}</p>
+              <p>Aliases: {{p.aliases}}</p>
+              <p>Father: {{p.father}}</p>
+              <p>Mother: {{p.mother}}</p>
+              <p>Spouse: {{p.spouse}}</p>
+              <p>Allegiances: {{p.allegiances}}</p>
+
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+
+<ion-fab bottom right #fab>
+   <button ion-fab (click)="pageScroller()">
+      <ion-icon name="ios-arrow-up"></ion-icon>
+   </button>
+ </ion-fab>
+
+</ion-content>
